@@ -10,7 +10,7 @@ Pick a tracklist and play the preview.
 
 -----------------------------------------
 
-*** Requirements ***
+***Requirements***
 
 Python VLC, install:
 
