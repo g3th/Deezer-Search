@@ -1,14 +1,15 @@
 import requests
 import subprocess
 import shlex
+import vlc
 from head import header
 from funcs import longest, spaces, takinOurJobs
 
 header()
 
-albums=[]; tracklist=[]; a=0
+albums=[]; tracklist=[]; previews=[];a=0
 		
-search = input('\nSearch Artist: ')	
+search = 'Herbie Hancock' #input('\nSearch Artist: ')	
 header()
 
 artist = requests.get('http://api.deezer.com/search/artist/', params={'q':search.replace(" ","+")}).json()
@@ -27,10 +28,7 @@ while a < len(tracks['data']):
 	if a == len(tracks['data']):
 		a = 0; break
 
-albums = list(dict.fromkeys(albums))
-tracklist = list(dict.fromkeys(tracklist))
-
-print('Search Returned '+str(len(albums)+1)+' albums, duplicate entries were omitted.\n')
+print('Search Returned '+str(len(albums))+' albums. \n')
 
 while a != len(albums):
 	try:
@@ -46,11 +44,15 @@ while a != len(albums):
 		break
 
 option=input("\n\nAlbum Number: ")
-albumTracks=requests.get(tracklist[int(option)]).json()
+albumTracks=requests.get(tracklist[int(option)-1]).json()
 
 header()
-print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*80);a=0
+print("ALBUM : "+tracks['data'][int(option)-1]['album']['title']);print("-"*80);a=0
 while a < len(albumTracks['data']):
 	print(str(a+1)+" - "+albumTracks['data'][a]['title'])
+	previews.append(albumTracks['data'][a]['preview'])
 	a +=1
+
+previewIndex = input("\nChoose a 30sec preview: ")
+
 
