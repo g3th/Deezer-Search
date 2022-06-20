@@ -8,7 +8,7 @@ Tool to search Deezer's database using its api.
 
 Enter an artist, then subsequently an album by that artist.
 
-Pick a tracklist and play the preview.
+Pick a track and play the preview.
 
 -----------------------------------------
 
