@@ -2,6 +2,8 @@
 -----------------------------------------
 ***Playing around with Deezer api***
 
+![Alt text](assets/dsearch.png "Deezer Terminal Search")
+
 Tool to search Deezer's database using its api. 
 
 Enter an artist, then subsequently an album by that artist.
