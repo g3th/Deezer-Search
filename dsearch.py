@@ -1,6 +1,5 @@
 import requests
-import subprocess
-import shlex
+
 from selenium import webdriver
 from head import header
 from funcs import longest, spaces, takinOurJobs
