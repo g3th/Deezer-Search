@@ -2,7 +2,7 @@ import requests
 import subprocess
 import shlex
 from head import header
-from funcs import longest,spaces,takinOurJobs
+from funcs import longest, spaces, takinOurJobs
 
 header()
 
