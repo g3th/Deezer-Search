@@ -25,4 +25,5 @@ def takinOurJobs(string):
 	try:
 		string.encode(encoding='utf-8').decode('ascii')
 	except UnicodeError:
-		string.replace(string[:5],'..')
+		string = string.replace(string[10:],'..')
+	return string

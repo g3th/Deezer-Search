@@ -17,8 +17,7 @@ tracks = requests.get(page).json()
 
 while a < len(tracks['data']):
 	trackRequest = tracks['data'][a]['album']['title']
-	takinOurJobs(trackRequest)
-	
+	trackRequest = takinOurJobs(trackRequest)
 	if len(trackRequest) > 30:
 		albums.append(trackRequest.replace(trackRequest[28:],'..'))	
 	else:	
@@ -34,19 +33,26 @@ tracklist = list(dict.fromkeys(tracklist))
 print('Search Returned '+str(len(albums)+1)+' albums, duplicate entries were omitted.\n')
 print(longest(albums))
 
-while a != len(albums):	
-	if a < 10:
-		print (' '+str(a+1)+" - "+albums[a]+" "*spaces(albums,a)+"| ",end='')
-		print(''+str(a+2)+" - "+albums[a+1])
-	else:
-		print (str(a+1)+" - "+albums[a]+" "*spaces(albums,a)+"| ",end='')
-		print(str(a+2)+" - "+albums[a+1])
-	a +=2
+while a != len(albums):
+	try:
+		if a < 10:
+			print (' '+str(a+1)+" - "+albums[a]+" "*spaces(albums,a)+"| ",end='')
+			print(''+str(a+2)+" - "+albums[a+1])
+		else:
+			print (str(a+1)+" - "+albums[a]+" "*spaces(albums,a)+"| ",end='')
+			print(str(a+2)+" - "+albums[a+1])
+		a +=2
+	except IndexError:
+		a = 0
+		break
 
 
 option=input("\nAlbum Number: ")
 albumTracks=requests.get(tracklist[int(option)]).json()
 header()
+
+print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*65)
 while a < len(albumTracks['data']):
 	print(str(a)+" - "+albumTracks['data'][a]['title'])
 	a +=1
+print("\n")
