@@ -49,8 +49,8 @@ option=input("\n\nAlbum Number: ")
 albumTracks=requests.get(tracklist[int(option)]).json()
 
 header()
-print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*65);a=0
+print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*80);a=0
 while a < len(albumTracks['data']):
-	print(str(a)+" - "+albumTracks['data'][a]['title'])
+	print(str(a+1)+" - "+albumTracks['data'][a]['title'])
 	a +=1
 
