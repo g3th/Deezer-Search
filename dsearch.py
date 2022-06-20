@@ -1,7 +1,7 @@
 import requests
 import subprocess
 import shlex
-import vlc
+from selenium import webdriver
 from head import header
 from funcs import longest, spaces, takinOurJobs
 
@@ -9,7 +9,7 @@ header()
 
 albums=[]; tracklist=[]; previews=[];a=0
 		
-search = 'Herbie Hancock' #input('\nSearch Artist: ')	
+search = input('\nSearch Artist: ')	
 header()
 
 artist = requests.get('http://api.deezer.com/search/artist/', params={'q':search.replace(" ","+")}).json()
@@ -54,5 +54,7 @@ while a < len(albumTracks['data']):
 	a +=1
 
 previewIndex = input("\nChoose a 30sec preview: ")
+browser = webdriver.Chrome()
+browser.set_window_size(100,100);browser.get(previews[int(previewIndex)-1])
 
-
+print("\nEnjoy.\n")

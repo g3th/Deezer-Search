@@ -12,9 +12,9 @@ Pick a tracklist and play the preview.
 
 ***Requirements***
 
-Python VLC, install:
+Selenium Webdriver(chrome):
 
-```pip3 install python-vlc```
+```pip3 install selenium```
 
 
 
