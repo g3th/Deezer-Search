@@ -31,7 +31,6 @@ albums = list(dict.fromkeys(albums))
 tracklist = list(dict.fromkeys(tracklist))
 
 print('Search Returned '+str(len(albums)+1)+' albums, duplicate entries were omitted.\n')
-print(longest(albums))
 
 while a != len(albums):
 	try:
