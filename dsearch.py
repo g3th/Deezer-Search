@@ -8,7 +8,7 @@ header()
 
 albums=[]; tracklist=[]; a=0
 		
-search = 'Herbie Hancock' #input('Search Artist: ');header()	
+search = input('\nSearch Artist: ')	
 header()
 
 artist = requests.get('http://api.deezer.com/search/artist/', params={'q':search.replace(" ","+")}).json()
@@ -45,13 +45,12 @@ while a != len(albums):
 		a = 0
 		break
 
-
-option=input("\nAlbum Number: ")
+option=input("\n\nAlbum Number: ")
 albumTracks=requests.get(tracklist[int(option)]).json()
-header()
 
-print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*65)
+header()
+print("ALBUM : "+tracks['data'][int(option)]['album']['title']);print("-"*65);a=0
 while a < len(albumTracks['data']):
 	print(str(a)+" - "+albumTracks['data'][a]['title'])
 	a +=1
-print("\n")
+

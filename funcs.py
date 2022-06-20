@@ -14,9 +14,9 @@ def longest(value):
 def spaces(value, index):
 	nspace = 0
 	if len(value[index]) < len(longest(value)):
-		nspace = len(value[index])+len(longest(value))	
+		nspace = len(longest(value))-len(value[index])+2
 	else:
-		nspace = len(value[index])
+		nspace = 2
 	return nspace
 
 #string characters are not English (i.e. Japanese, Arabic, Cyrillic...)
