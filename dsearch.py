@@ -3,12 +3,26 @@ import requests
 from selenium import webdriver
 from head import header
 from funcs import longest, spaces, takinOurJobs
+from dlogin import user_pass, login_automation
+
+credentials = []
+
+header()
+	
+user_pass()
+
+with open('credentials', 'r') as creds:
+	for lines in creds:
+		credentials.append(lines)
+		
+login_automation(credentials[0],credentials[1])
+		
+albums=[]; tracklist=[]; previews=[];a=0
 
 header()
 
-albums=[]; tracklist=[]; previews=[];a=0
-		
 search = input('\nSearch Artist: ')	
+
 header()
 
 artist = requests.get('http://api.deezer.com/search/artist/', params={'q':search.replace(" ","+")}).json()
